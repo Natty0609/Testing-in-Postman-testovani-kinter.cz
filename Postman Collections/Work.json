@@ -1,0 +1,459 @@
+{
+  "info": {
+    "_postman_id": "dbbc3d1f-e1a5-4ddd-9d04-15f03be992d7",
+    "name": "Work",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Spravný uživatel a heslo (Case 1)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "6fd02dde-194b-48de-8f7b-2a21e2245688",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(\"200\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Your test name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"correct\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "6b761268-3756-413b-8628-db224806c971",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin\",\"password\":\"tajneadmin\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    },
+    {
+      "name": "Uživatel jen čísla (Case 2)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4f436f6e-8e73-48f6-93d1-4da1ba406cab",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(\"403\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Your test name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"neexistujici uzivatel\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "947d9a11-e97e-48df-ae1b-2762a9335184",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"18720309730974\",\"password\":\"tajneadmin\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    },
+    {
+      "name": "Uživatel diakritika, Heslo správně(Case 6)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c252eb8d-01cc-4617-b97b-43fa85622400",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(\"500\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"username\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"correct\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "5a92b5f0-46a9-4d6d-8ea9-7ccf9699e088",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"íříěáířéšáčíšáříčšáří\",\"password\":\"tajneadmin\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    },
+    {
+      "name": "Spravný udaje, IE prohlížeč (Case 5)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "299903e8-db5a-4691-898d-a3c750026236",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(\"500\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"username\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"correct\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "bff76886-e118-44d4-95e0-b28ddd673755",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"íříěáířéšáčíšáříčšáří\",\"password\":\"tajneadmin\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    },
+    {
+      "name": "Uživatel specialný znaky,Heslo spravně (Case 8)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "021e85d2-3d20-4589-a198-855ce9a2907b",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(\"403\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"username\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"neexistujici uzivatel\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "2c45aa86-e57c-4c81-8434-d8c6e1262223",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"'@!&%(*\",\"password\":\"tajneadmin\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    },
+    {
+      "name": "Uživatel spravně,Heslo specialný znaky(Case 9)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "8f3df79c-db1b-48bc-8c04-300bb73d4710",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"username\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"correct\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "9b5f4685-099b-4082-bd94-a606609a0825",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin\",\"password\":\"@!&%(*\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    },
+    {
+      "name": "Sptaný uživatel a heslo (Case 4)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f378d91e-d14d-458a-bba5-2a92df5e5f5a",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(\"403\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Your test name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"neexistujici uzivatel\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "12d50193-5df6-44fc-9d81-d60ebc431948",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin70\",\"password\":\"tajneXKDadmin\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    },
+    {
+      "name": "Uživatel spravně, Heslo diakritika (Case 7)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a9a379d2-1d6e-4cbb-a2a3-1f511c74539b",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(\"403\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Your test name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"spatne heslo\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "91269e5e-d1dc-4e9d-bf5a-648f75d4da86",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin\",\"password\":\"tajneadminýřšéíýéšýřéíšýéířš\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    },
+    {
+      "name": "Špatně heslo (Case 3)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "9cf61aa6-0290-4a94-9a6e-af3670f34262",
+            "exec": [
+              "pm.test(\"prislaseni kontrola\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.response).to.eql(\"403\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Your test name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.reason).to.eql(\"spatne heslo\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Kontrola doruceni dotazu\", function () {\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(80);\r",
+              "});\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "ce9ae0b3-2f15-4c04-b113-7721a4464c3a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin\",\"password\":\"tajXneadmin\",\"useragent\":\"Chrome\"}\r\n",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": "http://testovani.kitner.cz/login_app/userauth.php"
+      },
+      "response": []
+    }
+  ]
+}
